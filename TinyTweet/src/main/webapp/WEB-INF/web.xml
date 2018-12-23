@@ -7,6 +7,15 @@
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>HelloAppEngine</servlet-name>
+    <servlet-class>Servlet.HelloAppEngine</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>HelloAppEngine</servlet-name>
+    <url-pattern>/hello</url-pattern>
+
+</servlet-mapping>
   <filter>
         <filter-name>ObjectifyFilter</filter-name>
         <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
