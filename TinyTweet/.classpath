@@ -23,7 +23,10 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-11"/>
 	<classpathentry kind="lib" path="C:/Users/Utilisateur/Documents/guava-23.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Utilisateur/Documents/objectify-5.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Utilisateur/Downloads/libs/jdk-11/lib/jrt-fs.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
