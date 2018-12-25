@@ -10,3 +10,8 @@ gcloud app versions list
 
 delete
 gcloud app versions delete v1 v2
+
+initialisation l'adresse mail 
+ git config --global user.email XXXX@users.noreply.github.com
+
+$ git commit --amend --reset-author

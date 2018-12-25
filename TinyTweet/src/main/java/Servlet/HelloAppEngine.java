@@ -37,4 +37,10 @@ public class HelloAppEngine extends HttpServlet {
 	    response.getWriter().print("Hello App Engine!\r\n");
 	    this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp" ).forward( request, response );
 	  }
+	  
+	    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+
+	        System.out.println("enfinnnndans le psot");
+
+	    }
 }
