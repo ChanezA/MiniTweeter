@@ -1,0 +1,12 @@
+se positionner dans le local google-cloud-sdk\bin
+
+C:\Users\Utilisateur\AppData\Local\google\Cloud SDK\google-cloud-sdk\bin
+
+congiguer avec l'identifiant du projet
+gcloud config set project VALUE
+
+lister les versions 
+gcloud app versions list
+
+delete
+gcloud app versions delete v1 v2
