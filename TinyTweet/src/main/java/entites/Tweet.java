@@ -1,10 +1,12 @@
-package Entités;
+package entites;
 import java.util.ArrayList;
 
 import com.google.appengine.api.datastore.Key;
 import com.googlecode.objectify.annotation.*;
 
 @Entity
+@Cache
+@Index
 public class Tweet {
 	@Id Long id;
 	private String message;

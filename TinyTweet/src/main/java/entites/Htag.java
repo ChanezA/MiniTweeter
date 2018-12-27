@@ -1,9 +1,10 @@
-package Entités;
+package entites;
 import java.util.ArrayList;
 
 import com.googlecode.objectify.annotation.*;
 
 @Entity
+@Index
 public class Htag {
 	@Id Long id;
 	private ArrayList<Tweet>tweets;

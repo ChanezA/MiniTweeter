@@ -1,10 +1,11 @@
-package Entités;
+package entites;
 import java.util.ArrayList;
 
 import com.google.api.services.discovery.Discovery.Apis.List;
 import com.googlecode.objectify.annotation.*;
 
 @Entity
+@Index
 public class User {
 	@Id Long id;
 	private String firstname;
