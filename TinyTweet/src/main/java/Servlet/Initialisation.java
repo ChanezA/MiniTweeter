@@ -2,6 +2,7 @@ package Servlet;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.googlecode.objectify.annotation.*;
 import javax.servlet.ServletException;
@@ -26,15 +27,19 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 @SuppressWarnings("serial")
 public class Initialisation extends HttpServlet {
 	 static {
-	       // ObjectifyService.register(Tweet.class);
-		 //ObjectifyService.register(User.class);
-	       
+		 ObjectifyService.register(Htag.class);
+	     ObjectifyService.register(Tweet.class);
+		 ObjectifyService.register(User.class);
+		 ObjectifyService.register(Followers.class);
+		 ObjectifyService.register(Followed.class);
+
+		
 	    }
 
 	 @Override
 	  public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	      throws ServletException, IOException {
-
+		 User p = new User("groknan", "chanez","amri");
 	    response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
 	    java.util.Date juDate= new java.util.Date() ;

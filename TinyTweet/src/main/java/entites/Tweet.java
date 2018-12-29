@@ -11,13 +11,23 @@ public class Tweet {
 	@Id Long id;
 	private String message;
 	private User owner;
-	private ArrayList<User>tague;
-	private ArrayList<Htag>htags;
+	private Htag htags;
+	
 	public Tweet() {}// Obligatoire pour Objectify
-	public Tweet(String mess, User owner) {
+	public Tweet(String mess,User owner) {
 		this.message=mess;
 		this.owner=owner;
-		this.tague=new ArrayList<User>();
-		this.htags=new ArrayList<Htag>();
 	}
+	
+	public Tweet(String mess, User owner,Htag htag) {
+		this.message=mess;
+		this.owner=owner;
+		this.htags=htag;
+	}
+	
+	public void setHtag(Htag htag) {
+		this.htags=htag;
+	}
+	
+	
 }

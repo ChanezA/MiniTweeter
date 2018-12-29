@@ -7,9 +7,8 @@ import com.googlecode.objectify.annotation.*;
 @Index
 public class Htag {
 	@Id Long id;
-	private ArrayList<Tweet>tweets;
-	public Htag(){
-		this.tweets=new ArrayList<Tweet>();
-	}// Obligatoire pour Objectify
+	String sentence;//private ArrayList<Tweet>tweets;
+	public Htag(){}// Obligatoire pour Objectify
+	public Htag(String message){this.sentence=message;}
 	
 }
