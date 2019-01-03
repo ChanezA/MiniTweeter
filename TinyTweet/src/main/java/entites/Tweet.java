@@ -13,7 +13,7 @@ public class Tweet {
 	private User owner;
 	private Htag htags;
 	
-	public Tweet() {}// Obligatoire pour Objectify
+	private Tweet() {}// Obligatoire pour Objectify
 	public Tweet(String mess,User owner) {
 		this.message=mess;
 		this.owner=owner;

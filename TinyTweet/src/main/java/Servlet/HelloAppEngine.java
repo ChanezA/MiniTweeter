@@ -27,14 +27,14 @@ public class HelloAppEngine extends HttpServlet {
 
 	  @Override
 	  public void doGet(HttpServletRequest request, HttpServletResponse response) 
-	      throws ServletException, IOException {
+	   throws ServletException, IOException {
 
 	    response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
-	    java.util.Date juDate= new java.util.Date() ;
+	    /*java.util.Date juDate= new java.util.Date() ;
 	    DateTime dt = new DateTime(juDate);
 	    Integer jourDuMois = dt.getTimeZoneShift();
-	    request.setAttribute( "jour", jourDuMois );
+	    request.setAttribute( "jour", jourDuMois );*/
 	    response.getWriter().print("Hello App Engine!\r\n");
 	    this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp" ).forward( request, response );
 	  }

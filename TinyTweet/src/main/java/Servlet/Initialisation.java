@@ -39,13 +39,15 @@ public class Initialisation extends HttpServlet {
 	 @Override
 	  public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	      throws ServletException, IOException {
-		 User p = new User("groknan", "chanez","amri");
+		 //User cha = new User("cha", "chanez","amri");
+		 User ili = new User("ili", "ilias","amri");
+
+		 //ofy().save().entity(cha).now();
+		 ofy().save().entity(ili).now();
+		 
+		 //request.setAttribute("cha", cha);
 	    response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
-	    java.util.Date juDate= new java.util.Date() ;
-	    DateTime dt = new DateTime(juDate);
-	    Integer jourDuMois = dt.getTimeZoneShift();
-	    request.setAttribute( "jour", jourDuMois );
 	    response.getWriter().print("Hello App Engine!\r\n");
 	    this.getServletContext().getRequestDispatcher( "/WEB-INF/initialisation.jsp" ).forward( request, response );
 	  }

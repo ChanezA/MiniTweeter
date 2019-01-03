@@ -14,7 +14,7 @@ public class Followed {
 	 @Id Long id;
 	 @Parent Key user;
 	 private Hashtable<String,User> followed;
-	 public Followed (){}
+	 private Followed (){}
 	 public Followed(Key parent) {
 		this.followed = new Hashtable<String, User>();
 		this.user=parent;

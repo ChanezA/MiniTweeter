@@ -9,13 +9,13 @@ import com.googlecode.objectify.annotation.*;
 @Entity
 @Index
 public class User {
-	@Id Long id;
+	@Id String id;
 	private String firstname;
 	private String lastname;
-	private String pseudo;
-	public User() {}//obligatoire pour objectify
+	
+	private User() {}//obligatoire pour objectify
 	public User(String pseudo,String fname,String lname) {
-		this.pseudo=pseudo;
+		this.id=pseudo;
 		this.firstname=fname;
 		this.lastname=lname;
 	}
