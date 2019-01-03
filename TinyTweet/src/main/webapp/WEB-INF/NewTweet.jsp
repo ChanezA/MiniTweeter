@@ -26,6 +26,5 @@
         </form>
         <h1>afficher les derniers tweets</h1>
          <p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
-         <p> <%= ofy().load().entity(userService.getCurrentUser()).now()%></p>
     </body>
 </html>
