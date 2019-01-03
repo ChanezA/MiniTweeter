@@ -13,7 +13,7 @@
     <h1>Tiny Tweet</h1>
   
   	  <% if (userService.getCurrentUser() == null) { %>
-            <p><a href="<%= userService.createLoginURL("/") %>">Se connecter</a></p>
+            <p><a href="<%= userService.createLoginURL("/initialisation") %>">Se connecter</a></p>
         <% }
         else { %>
             <p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
@@ -21,16 +21,6 @@
         <% } %>
   	
   	
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href='/hello'>The servlet</a></td>
-        <td><a href='/initialisation'>The servlet init</a></td>
-        <td><a href='/publishaTweet'>The servlet To publish a tweet</a></td>           
-      </tr>
-      <p>Fonctionnne</p>
-    </table>
+    
   </body>
 </html>

@@ -10,16 +10,16 @@ import com.googlecode.objectify.annotation.*;
 public class Tweet {
 	@Id Long id;
 	private String message;
-	private User owner;
+	private Utilisateur owner;
 	private Htag htags;
 	
 	private Tweet() {}// Obligatoire pour Objectify
-	public Tweet(String mess,User owner) {
+	public Tweet(String mess,Utilisateur owner) {
 		this.message=mess;
 		this.owner=owner;
 	}
 	
-	public Tweet(String mess, User owner,Htag htag) {
+	public Tweet(String mess, Utilisateur owner,Htag htag) {
 		this.message=mess;
 		this.owner=owner;
 		this.htags=htag;

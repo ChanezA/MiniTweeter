@@ -13,10 +13,10 @@ import com.googlecode.objectify.annotation.*;
 public class Followed {
 	 @Id Long id;
 	 @Parent Key user;
-	 private Hashtable<String,User> followed;
+	 private Hashtable<String,Utilisateur> followed;
 	 private Followed (){}
 	 public Followed(Key parent) {
-		this.followed = new Hashtable<String, User>();
+		this.followed = new Hashtable<String, Utilisateur>();
 		this.user=parent;
 	 }
 }

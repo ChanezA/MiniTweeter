@@ -19,6 +19,8 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import javax.servlet.http.*;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.cmd.LoadType;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 import entites.*;
 
@@ -29,7 +31,7 @@ public class Initialisation extends HttpServlet {
 	 static {
 		 ObjectifyService.register(Htag.class);
 	     ObjectifyService.register(Tweet.class);
-		 ObjectifyService.register(User.class);
+		 ObjectifyService.register(Utilisateur.class);
 		 ObjectifyService.register(Followers.class);
 		 ObjectifyService.register(Followed.class);
 
@@ -40,12 +42,17 @@ public class Initialisation extends HttpServlet {
 	  public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	      throws ServletException, IOException {
 		 //User cha = new User("cha", "chanez","amri");
-		 User ili = new User("ili", "ilias","amri");
-
+		// User ili = new User("ili", "ilias","amri");
 		 //ofy().save().entity(cha).now();
-		 ofy().save().entity(ili).now();
-		 
+		 //ofy().save().entity(ili).now();
 		 //request.setAttribute("cha", cha);
+		 
+		 //Utilisateur utilisateurs =  (Utilisateur) ofy().load().type(Utilisateur.class).filter("googleUser",userService.getCurrentUser()).list();
+		//utilisateurs == null
+	
+		 
+		 
+		 		 
 	    response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().print("Hello App Engine!\r\n");
@@ -53,8 +60,29 @@ public class Initialisation extends HttpServlet {
 	  }
 	  
 	    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+	    	  String pseudo = request.getParameter("pseudo");
+	    	  String name = request.getParameter("name");
+	    	  String firstname = request.getParameter("firstname");
+	    	  
+	    	  //recuperer la personne dans le datastore 
+	    	  Utilisateur utilisateur = ofy().load().type(Utilisateur.class).id("pseudo").now();
+	    	  if(utilisateur == null) {
+	    		  //si elle n'xiste pas on cree une
+	    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
+	    		  ofy().save().entity(nouvuser).now();
+	    		  
+	    	  }else {
+	    		 // elle existe on ne fait rien
+	    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
+	    		  ofy().save().entity(nouvuser).now();
+	    	  }
+	    	  
+		        
+	  	    this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecté.jsp" ).forward( request, response );
 
-	        System.out.println("enfinnnndans le psot");
+		    }
 
-	    }
+	
+	   
+	    
 }

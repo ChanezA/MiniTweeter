@@ -42,8 +42,8 @@ public class PublishATweet extends HttpServlet {
 	            /* Gérer les erreurs de validation ici. */
 
 	        }
-	        User user = ofy().load().type(User.class).id("pseudo").now();
-	        Tweet newTweet = new Tweet(message,user);
+	        Utilisateur utilisateur = ofy().load().type(Utilisateur.class).id("pseudo").now();
+	        Tweet newTweet = new Tweet(message,utilisateur);
 			 ofy().save().entity(newTweet).now();
 
 	    }

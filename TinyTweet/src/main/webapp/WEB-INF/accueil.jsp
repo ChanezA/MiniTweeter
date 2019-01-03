@@ -8,11 +8,6 @@
     <body>
         <p>Ceci est une page générée depuis une JSP.</p>
        <h1>Vous avez aimé mon site ? Dites-le dans le Datastore !</h1>
-        <%
-            Integer jourDuMois = (Integer) request.getAttribute( "jour" );
-               out.println("Jour pair : " + jourDuMois);
-            %>
-          
             <form method="post" action="hello">
             <fieldset>
                 <legend>Inscription</legend>
