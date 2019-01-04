@@ -70,7 +70,8 @@ public class Initialisation extends HttpServlet {
 	    		  //si elle n'xiste pas on cree une
 	    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
 	    		  ofy().save().entity(nouvuser).now();
-	    		  
+	    		  Followers follow= new Followers(nouvuser);
+	    		  ofy().save().entity(follow).now();
 	    	  }else {
 	    		 // elle existe on ne fait rien
 	    		 

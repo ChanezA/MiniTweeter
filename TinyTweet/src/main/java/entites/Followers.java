@@ -12,11 +12,14 @@ import com.googlecode.objectify.annotation.*;
 
 public class Followers {
 	 @Id Long id;
-	 @Parent Key user;
+	 Utilisateur user;
 	 private Hashtable<String,Utilisateur> followers;
 	 public Followers (){}
-	 public Followers(Key parent) {
+	 public Followers(Utilisateur parent) {
 		this.followers = new Hashtable<String, Utilisateur>();
 		this.user=parent;
+	 }
+	 public void addFollower(String pseudo,Utilisateur user) {
+		 this.followers.put(pseudo, user);
 	 }
 }
