@@ -11,8 +11,7 @@ import com.googlecode.objectify.annotation.*;
 @Index
 
 public class Followers {
-	 @Id Long id;
-	 String user;
+	 @Id String user;
 	 private Hashtable<String,Utilisateur> followers;
 	 public Followers (){}
 	 public Followers(String parent) {
