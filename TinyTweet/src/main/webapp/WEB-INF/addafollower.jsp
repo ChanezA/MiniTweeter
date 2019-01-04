@@ -13,7 +13,7 @@
 <body>
 
        <h1>Entrez le nom de la personne que vous voulez suivre</h1>
-       <form method="post" action="publishaTweet">
+       <form method="post" action="FollowersAdding">
             <fieldset>
                  <label for="aajouter">message d utilisateur</label>
                 <input type="text" id="aajouter" name="aajouter" value="" size="20" maxlength="20" />

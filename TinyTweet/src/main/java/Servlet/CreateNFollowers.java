@@ -72,11 +72,11 @@
 		    		  //si elle n'xiste pas on cree une
 		    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
 		    		  ofy().save().entity(nouvuser).now();
-		    		  Followers follow= new Followers(nouvuser);
+		    		  Followers follow= new Followers(pseudo);
 		    		  for(int i=0; i<nb_followers; i++) {
 		    			 Utilisateur dummy = new Utilisateur(i+pseudo, i+firstname, i+name);
 		    			 ofy().save().entity(dummy).now();
-		    			 follow.addFollower(nouvuser.getId() + Integer.toString(i), nouvuser);
+		    			 //follow.addFollower(nouvuser.getId() + Integer.toString(i), nouvuser);
 		    		  }
 		    		  ofy().save().entity(follow).now();
 		    	  }else {
