@@ -39,6 +39,15 @@
     <url-pattern>/publishaTweet</url-pattern>
 </servlet-mapping>
 
+<servlet>
+    <servlet-name>FollowersAdding</servlet-name>
+    <servlet-class>Servlet.FollowersAdding</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>FollowersAdding</servlet-name>
+    <url-pattern>/FollowersAdding</url-pattern>
+</servlet-mapping>
+
   <filter>
         <filter-name>ObjectifyFilter</filter-name>
         <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
