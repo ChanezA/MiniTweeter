@@ -58,7 +58,8 @@
 		    this.getServletContext().getRequestDispatcher( "/WEB-INF/CreateNFollower.jsp" ).forward( request, response );
 		  }
 		  
-		    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		    @SuppressWarnings("unused")
+			public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		    	  String pseudo = request.getParameter("pseudo");
 		    	  String name = request.getParameter("name");
 		    	  String firstname = request.getParameter("firstname");
@@ -72,13 +73,16 @@
 		    		  //si elle n'xiste pas on cree une
 		    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
 		    		  ofy().save().entity(nouvuser).now();
-		    		  Followers follow= new Followers(pseudo);
-		    		  for(int i=0; i<nb_followers; i++) {
-		    			 Utilisateur dummy = new Utilisateur(i+pseudo, i+firstname, i+name);
+		    		  Followed followed = new Followed(pseudo);
+		    		  for (int i=0; i<nb_followers; i++) {
+		    			 Utilisateur dummy = new Utilisateur(pseudo+"_"+i, firstname+"_"+i, name+"_"+i);
 		    			 ofy().save().entity(dummy).now();
-		    			 //follow.addFollower(nouvuser.getId() + Integer.toString(i), nouvuser);
+		    			 Followers follow= new Followers(dummy.getId());
+		    			 follow.addFollower(nouvuser);
+		    			 ofy().save().entity(follow).now();
+		    			 followed.addFollowed(dummy);
+		    			 ofy().save().entity(followed).now();
 		    		  }
-		    		  ofy().save().entity(follow).now();
 		    	  }else {
 		    		 // elle existe on ne fait rien
 		    		 

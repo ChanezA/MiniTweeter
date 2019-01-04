@@ -11,14 +11,14 @@ import com.googlecode.objectify.annotation.*;
 @Index
 
 public class Followed {
-	 @Id String user;
-	 private Hashtable<String,Utilisateur> followed;
+	 @Id String user; 
+	 private ArrayList<Utilisateur> followed;
 	 private Followed (){}
 	 public Followed(String parent) {
-		this.followed = new Hashtable<String, Utilisateur>();
+		this.followed = new ArrayList<Utilisateur>();
 		this.user=parent;
 	 }
-	 public void addFollowed(String pseudo,Utilisateur user) {
-		 this.followed.put(pseudo, user);
+	 public void addFollowed(Utilisateur user) {
+		 this.followed.add(user);
 	 }
 }

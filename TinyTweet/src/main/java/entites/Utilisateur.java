@@ -21,5 +21,9 @@ public class Utilisateur {
 		this.firstname=fname;
 		this.lastname=lname;
 	}
+	public String getId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
 	
 }

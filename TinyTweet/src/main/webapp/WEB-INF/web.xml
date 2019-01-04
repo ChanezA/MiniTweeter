@@ -31,6 +31,15 @@
 </servlet-mapping>
 
 <servlet>
+    <servlet-name>CreateNFollowers</servlet-name>
+    <servlet-class>Servlet.CreateNFollowers</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>CreateNFollowers</servlet-name>
+    <url-pattern>/createNFollowers</url-pattern>
+</servlet-mapping>
+
+<servlet>
     <servlet-name>PublishATweet</servlet-name>
     <servlet-class>Servlet.PublishATweet</servlet-class>
 </servlet>

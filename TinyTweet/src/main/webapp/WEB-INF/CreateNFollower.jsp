@@ -10,7 +10,7 @@
 <p>Si j'existe en tant que user je suis rediriger vers la page ou j'ai le choic de faire la requete que je veux sinon vers un fomulaire d'inscripetion<p>
  <h1>Entrez votre pseudo</h1>
        
-       <form method="post" action="initialisation">
+       <form method="post" action="createNFollowers">
             <fieldset>
                 <legend>New Tweet</legend>
                 <label for="pseudo">pseudo de l utilisateur</label>

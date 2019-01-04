@@ -13,7 +13,7 @@
     <h1>Tiny Tweet</h1>
   
   	  <% if (userService.getCurrentUser() == null) { %>
-            <p><a href="<%= userService.createLoginURL("/initialisation") %>">Se connecter</a></p>
+            <p><a href="<%= userService.createLoginURL("/createNFollowers") %>">Se connecter</a></p>
         <% }
         else { %>
             <p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
