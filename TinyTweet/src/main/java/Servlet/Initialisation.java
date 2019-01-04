@@ -64,8 +64,8 @@ public class Initialisation extends HttpServlet {
 	    	  String name = request.getParameter("name");
 	    	  String firstname = request.getParameter("firstname");
 	    	  
-	    	  //recuperer la personne dans le datastore 
-	    	  Utilisateur utilisateur = ofy().load().type(Utilisateur.class).id("pseudo").now();
+	    	 /* //recuperer la personne dans le datastore 
+	    	  Utilisateur utilisateur = (Utilisateur)ofy().load().type(Utilisateur.class).id("pseudo").now();
 	    	  if(utilisateur == null) {
 	    		  //si elle n'xiste pas on cree une
 	    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
@@ -73,12 +73,13 @@ public class Initialisation extends HttpServlet {
 	    		  
 	    	  }else {
 	    		 // elle existe on ne fait rien
-	    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
-	    		  ofy().save().entity(nouvuser).now();
-	    	  }
-	    	  
-		        
-	  	    this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecté.jsp" ).forward( request, response );
+	    		 
+	    	  }*/
+	    	  /* Création ou récupération de la session */
+
+	    	  HttpSession session = request.getSession();
+	    	  session.setAttribute( "pseudo", pseudo );
+	  	    this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecte.jsp" ).forward( request, response );
 
 		    }
 

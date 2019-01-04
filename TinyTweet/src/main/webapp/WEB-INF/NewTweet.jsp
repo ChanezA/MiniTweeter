@@ -11,7 +11,7 @@
     <body>
        <h1>Ecrivez votre tweet !</h1>
        
-       <form method="post" action="hello">
+       <form method="post" action="publishaTweet">
             <fieldset>
                 <legend>New Tweet</legend>
                 <label for="pseudo">pseudo d utilisateur</label>

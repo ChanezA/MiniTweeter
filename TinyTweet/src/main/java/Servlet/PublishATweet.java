@@ -5,11 +5,9 @@ import java.sql.Date;
 import com.googlecode.objectify.annotation.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.google.api.client.util.DateTime;
+import com.google.api.services.discovery.Discovery.Apis.List;
 
 import javax.servlet.http.*;
 import com.googlecode.objectify.ObjectifyService;
@@ -27,33 +25,36 @@ public class PublishATweet extends HttpServlet {
 	    response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().print("Hello App Engine!\r\n");
-	    this.getServletContext().getRequestDispatcher( "/WEB-INF/NewTweet.jsp" ).forward( request, response );
+	    //afficher la lists des tweet	   	    
+	    try {
+            // Requête Objectify
+            java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).limit(5).list();       
+            request.setAttribute("tweets", tweets);
+    	    this.getServletContext().getRequestDispatcher( "/WEB-INF/NewTweet.jsp" ).forward( request, response );
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	    
+	    
 	  }
 	  
 	    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 
 	    	 /* Récupération des champs du formulaire. */
-	        String pseudo = request.getParameter("pseudo");
 	        String message = request.getParameter("message");
+	        
+	        HttpSession session = request.getSession();
+	        String pseudo = (String) session.getAttribute( "pseudo" );
+	        
+	        //Utilisateur user = ofy().load().type(Utilisateur.class).filter("pseudo",pseudo);
+	        Tweet newTweet = new Tweet(message,pseudo);
+			ofy().save().entity(newTweet).now();
+			this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecte.jsp" ).forward( request, response );
 
-	        try {
-	            validationPseudo( pseudo );
-	        } catch (Exception e) {
-	            /* Gérer les erreurs de validation ici. */
-
-	        }
-	        Utilisateur utilisateur = ofy().load().type(Utilisateur.class).id("pseudo").now();
-	        Tweet newTweet = new Tweet(message,utilisateur);
-			 ofy().save().entity(newTweet).now();
 
 	    }
 
-	    private void validationPseudo( String email ) throws Exception{
-	    	 if ( true) {
-	    		 /*pseudo existe dans la base de donnee*/
-	    	    } else {
-	    	        throw new Exception( "Merci de saisir à nouveau." );
-	    	    }
-	    }
 	  
 }

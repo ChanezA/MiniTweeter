@@ -13,10 +13,11 @@
       </tr>
       <tr>
         <td><a href='/hello'>The servlet</a></td>
-        <td><a href='/initialisation'>The servlet init</a></td>
-        <td><a href='/publishaTweet'>The servlet To publish a tweet</a></td>           
+        <td><a href='/publishaTweet'>The servlet To publish a tweet</a></td>                   
       </tr>
     </table>
     <p>Heyyyy fonctioooonnne </p>
+    	     	<%String pseudo = (String) session.getAttribute( "pseudo" ); %>
+	    	  
 </body>
 </html>
