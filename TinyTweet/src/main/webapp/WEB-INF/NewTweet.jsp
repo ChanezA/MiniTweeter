@@ -13,11 +13,7 @@
        
        <form method="post" action="publishaTweet">
             <fieldset>
-                <legend>New Tweet</legend>
-                <label for="pseudo">pseudo d utilisateur</label>
-                <input type="text" id="pseudo" name="pseudo" value="" size="20" maxlength="20" />
-                <br />
-                 <label for="message">pseudo d utilisateur</label>
+                 <label for="message">message d utilisateur</label>
                 <input type="text" id="pseudo" name="pseudo" value="" size="200" maxlength="200" />
                 <br />
                 <input type="submit" value="Publier" class="sansLabel" />

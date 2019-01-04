@@ -64,7 +64,7 @@ public class Initialisation extends HttpServlet {
 	    	  String name = request.getParameter("name");
 	    	  String firstname = request.getParameter("firstname");
 	    	  
-	    	 /* //recuperer la personne dans le datastore 
+	    	 //recuperer la personne dans le datastore 
 	    	  Utilisateur utilisateur = (Utilisateur)ofy().load().type(Utilisateur.class).id("pseudo").now();
 	    	  if(utilisateur == null) {
 	    		  //si elle n'xiste pas on cree une
@@ -74,7 +74,7 @@ public class Initialisation extends HttpServlet {
 	    	  }else {
 	    		 // elle existe on ne fait rien
 	    		 
-	    	  }*/
+	    	  }
 	    	  /* Création ou récupération de la session */
 
 	    	  HttpSession session = request.getSession();

@@ -13,13 +13,13 @@
        <form method="post" action="initialisation">
             <fieldset>
                 <legend>New Tweet</legend>
-                <label for="pseudo">pseudo d utilisateur</label>
+                <label for="pseudo">pseudo de l utilisateur</label>
                 <input type="text" id="pseudo" name="pseudo" value="" size="20" maxlength="20" />
                 <br />
-                <label for="name">pseudo d utilisateur</label>
+                <label for="name">prenom d utilisateur</label>
                 <input type="text" id="name" name="name" value="" size="20" maxlength="20" />
                 <br />
-                <label for="firstname">pseudo d utilisateur</label>
+                <label for="firstname">nom d utilisateur</label>
                 <input type="text" id="firstname" name="firstname" value="" size="20" maxlength="20" />
                 <br />
                 <input type="submit" value="se connecter" class="sansLabel" />
