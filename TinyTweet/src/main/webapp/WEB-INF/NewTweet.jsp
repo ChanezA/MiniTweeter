@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
      <%@ page import="com.google.appengine.api.users.*" %>
 <% UserService userService = UserServiceFactory.getUserService(); %>
-
+<%@ page import="java.util.List" %>
+<%@ page import="entites.Tweet" %>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -14,13 +15,25 @@
        <form method="post" action="publishaTweet">
             <fieldset>
                  <label for="message">message d utilisateur</label>
-                <input type="text" id="pseudo" name="pseudo" value="" size="200" maxlength="200" />
+                <input type="text" id="message" name="message" value="" size="200" maxlength="200" />
                 <br />
                 <input type="submit" value="Publier" class="sansLabel" />
                 <br />
             </fieldset>
         </form>
-        <h1>afficher les derniers tweets</h1>
+        
          <p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
+         <h1>afficher les derniers tweets</h1>
+          <%
+          java.util.List<Tweet> messages =(List<Tweet>)request.getAttribute("tweets");
+            for (Tweet message : messages) {
+        %>
+        <p>
+            <strong><%= userService.getCurrentUser().getNickname() %></strong> tweet :<br />
+            <%= message.getMessage() %>
+        </p>
+        <%
+            }
+        %>
     </body>
 </html>

@@ -28,6 +28,9 @@ public class Tweet {
 	public void setHtag(Htag htag) {
 		this.htags=htag;
 	}
+	public String getMessage() {
+		return this.message;
+	}
 	
 	
 }
