@@ -33,9 +33,6 @@ public class PublishATweet extends HttpServlet {
 	        String pseudo = (String) session.getAttribute( "pseudo" );
 			Followers followers = ofy().load().type(Followers.class).id(pseudo).now();
 			 
-			// Utilisateur defaut = new Utilisateur("default","default","default");
-			 //ofy().save().entity(defaut).now();
-			//followers.addFollower(defaut);
 			
 			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
 			/*if(mesfollowers.size()==0) {
