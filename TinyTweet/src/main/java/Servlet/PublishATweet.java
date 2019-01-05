@@ -54,11 +54,11 @@ public class PublishATweet extends HttpServlet {
 			ofy().save().entity(newTweet).now();
 			
 			//récuperer tout les followers de user 
-			Followers followers = ofy().load().type(Followers.class).id(pseudo).now();
-			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
-			
+			Followed followers = ofy().load().type(Followed.class).id(pseudo).now();
+			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
+			int i = 0;
 	            for (Utilisateur follower : mesfollowers) {
-	            	System.out.println(follower.afficherMessage(newTweet));
+	            	follower.afficherMessage(newTweet);
 	            }
 			
 			//faire un foreach et appeler afficher message pour chacun

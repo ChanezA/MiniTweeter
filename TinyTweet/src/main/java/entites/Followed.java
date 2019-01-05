@@ -21,4 +21,8 @@ public class Followed {
 	 public void addFollowed(Utilisateur user) {
 		 this.followed.add(user);
 	 }
+	 
+	 public ArrayList<Utilisateur> getFollowed(){
+		 return followed;
+	 }
 }
