@@ -56,16 +56,12 @@ public class PublishATweet extends HttpServlet {
 			//récuperer tout les followers de user 
 			Followed followers = ofy().load().type(Followed.class).id(pseudo).now();
 			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
-			int i = 0;
+			long var = System.currentTimeMillis();
 	            for (Utilisateur follower : mesfollowers) {
 	            	follower.afficherMessage(newTweet);
 	            }
-			
+			System.out.println("Execute en " + (System.currentTimeMillis() - var) + "ms");
 			//faire un foreach et appeler afficher message pour chacun
 			this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecte.jsp" ).forward( request, response );
-
-
 	    }
-
-	  
 }
