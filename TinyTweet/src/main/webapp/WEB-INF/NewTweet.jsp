@@ -26,9 +26,9 @@
         
          <p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
          <h1>afficher les derniers tweets</h1>
-          <%
-          List<Tweet> tweet = ofy().load().type(Tweet.class).list();
-            for (Tweet message : tweet) {
+        <%--     <%
+          java.util.List<Tweet> messages =(List<Tweet>)request.getAttribute("tweet");
+            for (Tweet message : messages) {
         %>
         <p>
             <strong><%= message.getOwner() %></strong> tweet :<br />
@@ -36,9 +36,7 @@
         </p>
         <%
             }
-        %>
-        <p>
-        	Affichage en <%=(System.currentTimeMillis() - var) %> ms
-        </p> 
+        %>--%> 
+        <p>${resultat}</p>
     </body>
 </html>

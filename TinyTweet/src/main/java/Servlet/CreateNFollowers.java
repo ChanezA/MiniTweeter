@@ -41,17 +41,6 @@
 		 @Override
 		  public void doGet(HttpServletRequest request, HttpServletResponse response) 
 		      throws ServletException, IOException {
-			 //User cha = new User("cha", "chanez","amri");
-			// User ili = new User("ili", "ilias","amri");
-			 //ofy().save().entity(cha).now();
-			 //ofy().save().entity(ili).now();
-			 //request.setAttribute("cha", cha);
-			 
-			 //Utilisateur utilisateurs =  (Utilisateur) ofy().load().type(Utilisateur.class).filter("googleUser",userService.getCurrentUser()).list();
-			//utilisateurs == null
-		
-			 
-			 
 			 		 
 		    response.setContentType("text/plain");
 		    response.setCharacterEncoding("UTF-8");
@@ -77,14 +66,21 @@
 		    		  Followed followed = new Followed(pseudo);
 		    		  Followers avide = new Followers(pseudo);
 		    		  ofy().save().entity(avide).now();
+		    		  ofy().save().entity(followed).now();
 		    		  for (int i=0; i<nb_followers; i++) {
 		    			 Utilisateur dummy = new Utilisateur(pseudo+"_"+i, firstname+"_"+i, name+"_"+i);
 		    			 ofy().save().entity(dummy).now();
+		    			 
 		    			 Followers follow= new Followers(dummy.getId());
 		    			 follow.addFollower(nouvuser);
 		    			 ofy().save().entity(follow).now();
+		    			 
+		    			 Followed followeduser= new Followed(dummy.getId());
+		    			 ofy().save().entity(follow).now();
+		    			 
 		    			 followed.addFollowed(dummy);
 		    			 ofy().save().entity(followed).now();
+		    			 
 		    		  }
 		    	  }else {
 		    		 // elle existe on ne fait rien

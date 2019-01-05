@@ -64,11 +64,11 @@ public class FollowersAdding extends HttpServlet {
 	    		  resultat = "echec";
 	    	  }else {
 	    		  //je l'ajoute au gens que je suis
-		    	  Followed mesfolloweds =(Followed) ofy().load().type(Followed.class).id(owner).now();
-	    		  mesfolloweds.addFollowed(utilisateur);
+		    	  Followers mesfolloweds =(Followers) ofy().load().type(Followers.class).id(owner).now();
+	    		  mesfolloweds.addFollower(utilisateur);
 	    		 //je m'ajoute au gens qui le suivent
-		    	  Followers sesfollowers = (Followers)ofy().load().type(Followers.class).id(aajouter).now();
-		    	  sesfollowers.addFollower(userowner);
+		    	  Followed sesfollowers = (Followed)ofy().load().type(Followed.class).id(aajouter).now();
+		    	  sesfollowers.addFollowed(userowner);
 	    		 
 	    		 resultat = "Succes";
 	    	  }

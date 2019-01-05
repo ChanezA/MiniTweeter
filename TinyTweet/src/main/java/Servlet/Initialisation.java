@@ -41,18 +41,7 @@ public class Initialisation extends HttpServlet {
 	 @Override
 	  public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	      throws ServletException, IOException {
-		 //User cha = new User("cha", "chanez","amri");
-		// User ili = new User("ili", "ilias","amri");
-		 //ofy().save().entity(cha).now();
-		 //ofy().save().entity(ili).now();
-		 //request.setAttribute("cha", cha);
 		 
-		 //Utilisateur utilisateurs =  (Utilisateur) ofy().load().type(Utilisateur.class).filter("googleUser",userService.getCurrentUser()).list();
-		//utilisateurs == null
-	
-		 
-		 
-		 		 
 	    response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().print("Hello App Engine!\r\n");

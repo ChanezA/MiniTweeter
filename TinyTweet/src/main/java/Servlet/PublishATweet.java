@@ -28,9 +28,28 @@ public class PublishATweet extends HttpServlet {
 	    response.getWriter().print("Hello App Engine!\r\n");
 	    //afficher la lists des tweet	   	    
 	    try {
-            // Requête Objectify
-            java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).limit(5).list();       
-            request.setAttribute("tweets", tweets);
+	    	
+	    	HttpSession session = request.getSession();
+	        String pseudo = (String) session.getAttribute( "pseudo" );
+			Followers followers = ofy().load().type(Followers.class).id(pseudo).now();
+			 
+			// Utilisateur defaut = new Utilisateur("default","default","default");
+			 //ofy().save().entity(defaut).now();
+			//followers.addFollower(defaut);
+			
+			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
+			/*if(mesfollowers.size()==0) {
+				request.setAttribute("resultat", "pas de followers");
+			}*/
+	           /* for (Utilisateur follower : mesfollowers) {
+	    	        Utilisateur user = ofy().load().type(Utilisateur.class).id(pseudo).now();
+	    	        java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).filter("owner",pseudo).limit(1).list();
+	    	        request.setAttribute("tweet", tweets);
+	    	        request.setAttribute("resultat", "pas de followers");
+	            }
+	            */
+	        //java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).limit(5).list();       
+            //request.setAttribute("tweet", tweets);
     	    this.getServletContext().getRequestDispatcher( "/WEB-INF/NewTweet.jsp" ).forward( request, response );
         } catch (ServletException e) {
             e.printStackTrace();
