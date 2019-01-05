@@ -32,5 +32,9 @@ public class Tweet {
 		return this.message;
 	}
 	
+	public String getOwner() {
+		return owner;
+	}
+	
 	
 }

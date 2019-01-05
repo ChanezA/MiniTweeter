@@ -29,7 +29,7 @@
             for (Tweet message : messages) {
         %>
         <p>
-            <strong><%= userService.getCurrentUser().getNickname() %></strong> tweet :<br />
+            <strong><%= message.getOwner() %></strong> tweet :<br />
             <%= message.getMessage() %>
         </p>
         <%

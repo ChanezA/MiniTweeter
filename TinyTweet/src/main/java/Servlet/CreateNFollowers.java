@@ -65,11 +65,12 @@
 		    	  String firstname = request.getParameter("firstname");
 		    	  String nb_follower = request.getParameter("nb_follow");
 		    	  int nb_followers = Integer.parseInt(nb_follower);
-		    	  System.out.println(nb_followers);
+		    	
 		    	  
 		    	 //recuperer la personne dans le datastore 
-		    	  Utilisateur utilisateur = (Utilisateur)ofy().load().type(Utilisateur.class).id("pseudo").now();
+		    	  Utilisateur utilisateur = (Utilisateur)ofy().load().type(Utilisateur.class).id(pseudo).now();
 		    	  if(utilisateur == null) {
+		    		  
 		    		  //si elle n'xiste pas on cree une
 		    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
 		    		  ofy().save().entity(nouvuser).now();
