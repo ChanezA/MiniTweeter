@@ -10,11 +10,11 @@ import com.googlecode.objectify.annotation.*;
 @Entity
 @Index
 
-public class Followed {
+public class Follower {
 	 @Id String user; 
 	 private ArrayList<Utilisateur> followed;
-	 private Followed (){}
-	 public Followed(String parent) {
+	 private Follower (){}
+	 public Follower(String parent) {
 		this.followed = new ArrayList<Utilisateur>();
 		this.user=parent;
 	 }

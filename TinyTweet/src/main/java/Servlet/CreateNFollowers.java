@@ -32,8 +32,8 @@
 			 ObjectifyService.register(Htag.class);
 		     ObjectifyService.register(Tweet.class);
 			 ObjectifyService.register(Utilisateur.class);
-			 ObjectifyService.register(Followers.class);
-			 ObjectifyService.register(Followed.class);
+			 ObjectifyService.register(Follow.class);
+			 ObjectifyService.register(Follower.class);
 
 			
 		    }
@@ -63,19 +63,19 @@
 		    		  //si elle n'xiste pas on cree une
 		    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
 		    		  ofy().save().entity(nouvuser).now();
-		    		  Followed followed = new Followed(pseudo);
-		    		  Followers avide = new Followers(pseudo);
+		    		  Follower followed = new Follower(pseudo);
+		    		  Follow avide = new Follow(pseudo);
 		    		  ofy().save().entity(avide).now();
 		    		  ofy().save().entity(followed).now();
 		    		  for (int i=0; i<nb_followers; i++) {
 		    			 Utilisateur dummy = new Utilisateur(pseudo+"_"+i, firstname+"_"+i, name+"_"+i);
 		    			 ofy().save().entity(dummy).now();
 		    			 
-		    			 Followers follow= new Followers(dummy.getId());
+		    			 Follow follow= new Follow(dummy.getId());
 		    			 follow.addFollower(nouvuser);
 		    			 ofy().save().entity(follow).now();
 		    			 
-		    			 Followed followeduser= new Followed(dummy.getId());
+		    			 Follower followeduser= new Follower(dummy.getId());
 		    			 ofy().save().entity(follow).now();
 		    			 
 		    			 followed.addFollowed(dummy);

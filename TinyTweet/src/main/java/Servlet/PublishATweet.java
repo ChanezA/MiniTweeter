@@ -31,13 +31,14 @@ public class PublishATweet extends HttpServlet {
 	    	
 	    	HttpSession session = request.getSession();
 	        String pseudo = (String) session.getAttribute( "pseudo" );
-			Followers followers = ofy().load().type(Followers.class).id(pseudo).now();
+			Follower followers = ofy().load().type(Follower.class).id(pseudo).now();
 			 
 			
-			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
-			/*if(mesfollowers.size()==0) {
+			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
+			if(mesfollowers.isEmpty()) {
+				
 				request.setAttribute("resultat", "pas de followers");
-			}*/
+			}
 	           /* for (Utilisateur follower : mesfollowers) {
 	    	        Utilisateur user = ofy().load().type(Utilisateur.class).id(pseudo).now();
 	    	        java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).filter("owner",pseudo).limit(1).list();
@@ -70,7 +71,7 @@ public class PublishATweet extends HttpServlet {
 			ofy().save().entity(newTweet).now();
 			
 			//récuperer tout les followers de user 
-			Followed followers = ofy().load().type(Followed.class).id(pseudo).now();
+			Follower followers = ofy().load().type(Follower.class).id(pseudo).now();
 			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
 			long var = System.currentTimeMillis();
 	            for (Utilisateur follower : mesfollowers) {

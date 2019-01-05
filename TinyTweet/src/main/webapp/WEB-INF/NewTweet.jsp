@@ -4,7 +4,7 @@
 <% UserService userService = UserServiceFactory.getUserService(); %>
 <%@ page import="java.util.List" %>
 <%@ page import="entites.Tweet" %>
-<%@ page import="static com.googlecode.objectify.ObjectifyService.ofy"%>
+<%@ page import="static com.googlecode.objectify.ObjectifyService.ofy" %>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -26,9 +26,9 @@
         
          <p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
          <h1>afficher les derniers tweets</h1>
-        <%--     <%
-          java.util.List<Tweet> messages =(List<Tweet>)request.getAttribute("tweet");
-            for (Tweet message : messages) {
+          <%
+          List<Tweet> tweet = ofy().load().type(Tweet.class).list();
+            for (Tweet message : tweet) {
         %>
         <p>
             <strong><%= message.getOwner() %></strong> tweet :<br />
@@ -36,7 +36,9 @@
         </p>
         <%
             }
-        %>--%> 
-        <p>${resultat}</p>
+        %>
+        <p>
+        	Affichage en <%=(System.currentTimeMillis() - var) %> ms
+        </p> 
     </body>
 </html>

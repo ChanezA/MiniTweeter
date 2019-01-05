@@ -10,11 +10,11 @@ import com.googlecode.objectify.annotation.*;
 @Entity
 @Index
 
-public class Followers {
+public class Follow {
 	 @Id String user;
 	 private ArrayList<Utilisateur> followers;
-	 public Followers (){}
-	 public Followers(String parent) {
+	 public Follow (){}
+	 public Follow(String parent) {
 		this.followers = new ArrayList<Utilisateur>();
 		this.user=parent;
 	 }
@@ -24,5 +24,9 @@ public class Followers {
 	 
 	 public ArrayList<Utilisateur> getfollowers(){
 		 return followers;
+	 }
+	 
+	 public String getUser() {
+		 return user;
 	 }
 }

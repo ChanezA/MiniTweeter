@@ -29,8 +29,8 @@ public class FollowersAdding extends HttpServlet {
 		 ObjectifyService.register(Htag.class);
 	     ObjectifyService.register(Tweet.class);
 		 ObjectifyService.register(Utilisateur.class);
-		 ObjectifyService.register(Followers.class);
-		 ObjectifyService.register(Followed.class);	
+		 ObjectifyService.register(Follow.class);
+		 ObjectifyService.register(Follower.class);	
 	    }
 
 	 @Override
@@ -64,10 +64,10 @@ public class FollowersAdding extends HttpServlet {
 	    		  resultat = "echec";
 	    	  }else {
 	    		  //je l'ajoute au gens que je suis
-		    	  Followers mesfolloweds =(Followers) ofy().load().type(Followers.class).id(owner).now();
+		    	  Follow mesfolloweds =(Follow) ofy().load().type(Follow.class).id(owner).now();
 	    		  mesfolloweds.addFollower(utilisateur);
 	    		 //je m'ajoute au gens qui le suivent
-		    	  Followed sesfollowers = (Followed)ofy().load().type(Followed.class).id(aajouter).now();
+		    	  Follower sesfollowers = (Follower)ofy().load().type(Follower.class).id(aajouter).now();
 		    	  sesfollowers.addFollowed(userowner);
 	    		 
 	    		 resultat = "Succes";

@@ -32,8 +32,8 @@ public class Initialisation extends HttpServlet {
 		 ObjectifyService.register(Htag.class);
 	     ObjectifyService.register(Tweet.class);
 		 ObjectifyService.register(Utilisateur.class);
-		 ObjectifyService.register(Followers.class);
-		 ObjectifyService.register(Followed.class);
+		 ObjectifyService.register(Follow.class);
+		 ObjectifyService.register(Follower.class);
 
 		
 	    }
@@ -59,8 +59,8 @@ public class Initialisation extends HttpServlet {
 	    		  //si elle n'xiste pas on cree une
 	    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
 	    		  ofy().save().entity(nouvuser).now();
-	    		  Followers follow= new Followers(pseudo);
-	    		  Followed followed= new Followed(pseudo);
+	    		  Follow follow= new Follow(pseudo);
+	    		  Follower followed= new Follower(pseudo);
 	    		  
 	    		  ofy().save().entity(followed).now();
 	    		  ofy().save().entity(follow).now();
