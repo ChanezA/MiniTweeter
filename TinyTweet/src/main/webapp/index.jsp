@@ -17,6 +17,7 @@
         <% }
         else { %>
             <p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
+            <p><a href='/hello'>The servlet</a></p>
             <p><a href="<%= userService.createLogoutURL("/") %>">Se déconnecter</a></p>
         <% } %>
   	

@@ -21,4 +21,8 @@ public class Followers {
 	 public void addFollower(Utilisateur user) {
 		 this.followers.add(user);
 	 }
+	 
+	 public ArrayList<Utilisateur> getfollowers(){
+		 return followers;
+	 }
 }

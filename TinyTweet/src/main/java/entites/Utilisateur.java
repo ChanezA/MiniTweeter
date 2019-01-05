@@ -26,4 +26,9 @@ public class Utilisateur {
 		return id;
 	}
 	
+	public String afficherMessage(Tweet tweet) {
+		System.out.println(tweet.getMessage());
+		return tweet.getMessage();
+	}
+	
 }

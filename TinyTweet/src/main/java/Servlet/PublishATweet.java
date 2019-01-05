@@ -1,6 +1,7 @@
 package Servlet;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import com.googlecode.objectify.annotation.*;
 import javax.servlet.ServletException;
@@ -48,9 +49,19 @@ public class PublishATweet extends HttpServlet {
 	        HttpSession session = request.getSession();
 	        String pseudo = (String) session.getAttribute( "pseudo" );
 	        
-	        //Utilisateur user = ofy().load().type(Utilisateur.class).filter("pseudo",pseudo);
+	        Utilisateur user = ofy().load().type(Utilisateur.class).id(pseudo).now();
 	        Tweet newTweet = new Tweet(message,pseudo);
 			ofy().save().entity(newTweet).now();
+			
+			//récuperer tout les followers de user 
+			Followers followers = ofy().load().type(Followers.class).id(pseudo).now();
+			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
+			
+	            for (Utilisateur follower : mesfollowers) {
+	            	System.out.println(follower.afficherMessage(newTweet));
+	            }
+			
+			//faire un foreach et appeler afficher message pour chacun
 			this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecte.jsp" ).forward( request, response );
 
 
