@@ -75,6 +75,8 @@
 		    		  Utilisateur nouvuser = new Utilisateur(pseudo,firstname,name);
 		    		  ofy().save().entity(nouvuser).now();
 		    		  Followed followed = new Followed(pseudo);
+		    		  Followers avide = new Followers(pseudo);
+		    		  ofy().save().entity(avide).now();
 		    		  for (int i=0; i<nb_followers; i++) {
 		    			 Utilisateur dummy = new Utilisateur(pseudo+"_"+i, firstname+"_"+i, name+"_"+i);
 		    			 ofy().save().entity(dummy).now();
