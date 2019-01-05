@@ -36,19 +36,17 @@ public class PublishATweet extends HttpServlet {
 			
 			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
 			if(mesfollowers.isEmpty()) {
-				
 				request.setAttribute("resultat", "pas de followers");
 			}
-	           /* for (Utilisateur follower : mesfollowers) {
-	    	        Utilisateur user = ofy().load().type(Utilisateur.class).id(pseudo).now();
-	    	        java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).filter("owner",pseudo).limit(1).list();
-	    	        request.setAttribute("tweet", tweets);
-	    	        request.setAttribute("resultat", "pas de followers");
+	           for (Utilisateur follower : mesfollowers) {
+	        	   java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).filter("owner",follower.getId()).list();
+                   request.setAttribute("tweet", tweets);
 	            }
-	            */
+	           
+	            
 	        //java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).limit(5).list();       
             //request.setAttribute("tweet", tweets);
-    	    this.getServletContext().getRequestDispatcher( "/WEB-INF/NewTweet.jsp" ).forward( request, response );
+    	    this.getServletContext().getRequestDispatcher( "/WEB-INF/NewTweet.jsp" ).forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
