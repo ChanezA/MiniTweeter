@@ -31,7 +31,7 @@ Nous avons implémenté l’ajout d’un Utilisateur, en choisissant le nombre d
 Nous avons effectué les tests suivants:
 Temps moyens pour envoyer un tweet à 100 followers : 1.5 ms 
 
-
+<img src="https://user-images.githubusercontent.com/30860866/50741460-a25e5500-11fd-11e9-908a-e1db4b6e4275.png" width="45%"></img>
 
 # Temps pour lire 10, 50 et 100 tweets en ms. 
 10 tweets :118.5 ms
