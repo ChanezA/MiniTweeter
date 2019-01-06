@@ -10,7 +10,7 @@ import com.googlecode.objectify.annotation.*;
 public class Tweet {
 	@Id Long id;
 	private String message;
-	private String owner;
+	@Index private String owner;
 	private Htag htags;
 	
 	private Tweet() {}// Obligatoire pour Objectify

@@ -95,6 +95,7 @@
 
 		    	  HttpSession session = request.getSession();
 		    	  session.setAttribute( "pseudo", pseudo );
+		    	  request.setAttribute("time", 0);
 		  	    this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecte.jsp" ).forward( request, response );
 
 			    }		    

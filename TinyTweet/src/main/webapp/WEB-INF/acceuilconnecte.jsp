@@ -23,6 +23,7 @@
     </table>
     <p>Heyyyy fonctioooonnne </p>
     	     	<%String pseudo = (String) session.getAttribute( "pseudo" ); %>
+    	     	<p> Post d'un tweet en <%=request.getAttribute("time") %> ms </p>
 	    	  
 </body>
 </html>

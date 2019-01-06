@@ -31,14 +31,13 @@ public class PublishATweet extends HttpServlet {
 	    	
 	    	HttpSession session = request.getSession();
 	        String pseudo = (String) session.getAttribute( "pseudo" );
-			Follow followers = ofy().load().type(Follow.class).id(pseudo).now();
+			Follower followers = ofy().load().type(Follower.class).id(pseudo).now();
 			 
 			
-			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
+			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
 			if(mesfollowers == null) {
 				request.setAttribute("resultat", "pas de followers");
 			} else {
-				System.out.println("Je rentre ici");
 				int i = 0;
 				for (Utilisateur follower : mesfollowers) {
 					java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).filter("owner",follower.getId()).list();
@@ -70,16 +69,20 @@ public class PublishATweet extends HttpServlet {
 	        String pseudo = (String) session.getAttribute( "pseudo" );
 	        
 	        Utilisateur user = ofy().load().type(Utilisateur.class).id(pseudo).now();
+	        long var = System.currentTimeMillis();
 	        Tweet newTweet = new Tweet(message,pseudo);
 			ofy().save().entity(newTweet).now();
 			
 			//récuperer tout les followers de user 
-			Follow followers = ofy().load().type(Follow.class).id(pseudo).now();
-			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
-			long var = System.currentTimeMillis();
+			Follower followers = ofy().load().type(Follower.class).id(pseudo).now();
+			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
+			long var1 = System.currentTimeMillis();
 	            for (Utilisateur follower : mesfollowers) {
 	            	follower.afficherMessage(newTweet);
 	            }
+	        var1 = System.currentTimeMillis() - var1;
+	        System.out.println("var1= " + var1);
+	        request.setAttribute("time", var1);
 			//faire un foreach et appeler afficher message pour chacun
 			this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecte.jsp" ).forward( request, response );
 	    }
