@@ -1,6 +1,9 @@
 # TINY TWEETER
 Chanez Amri-Alan Baron-Louis Questel-Alexis Pineau
 
+Lien github : https://github.com/ChanezA/MiniTweeter
+Lien application : https://tinytweet-226310.appspot.com/
+
 # Organisation des classes 
 Nous avons choisi d’organiser nos classes de la manière suivante .
 
