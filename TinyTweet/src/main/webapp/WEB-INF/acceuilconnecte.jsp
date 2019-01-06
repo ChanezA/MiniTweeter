@@ -15,9 +15,8 @@
         <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
       </tr>
       <tr>
-        <td><a href='/hello'>The servlet</a></td>
-        <td><a href='/publishaTweet'>The servlet To publish a tweet</a></td>    
-        <td><a href='/FollowersAdding'>follow someone</a></td>                   
+        
+        <td><a href='/publishaTweet'>Publish a tweet</a></td>                     
         <td><a href="<%= userService.createLogoutURL("/") %>">Se déconnecter</a></td>
                        
       </tr>

@@ -65,6 +65,8 @@
 		    		  ofy().save().entity(nouvuser).now();
 		    		  Follower followed = new Follower(pseudo);
 		    		  Follow avide = new Follow(pseudo);
+		    		  avide.addFollower(nouvuser);
+		    		  followed.addFollowed(nouvuser);
 		    		  ofy().save().entity(avide).now();
 		    		  ofy().save().entity(followed).now();
 		    		  for (int i=0; i<nb_followers; i++) {
@@ -73,10 +75,12 @@
 		    			 
 		    			 Follow follow= new Follow(dummy.getId());
 		    			 follow.addFollower(nouvuser);
+		    			 follow.addFollower(dummy);
 		    			 ofy().save().entity(follow).now();
 		    			 
 		    			 Follower followeduser= new Follower(dummy.getId());
-		    			 ofy().save().entity(follow).now();
+		    			 followeduser.addFollowed(dummy);
+		    			 ofy().save().entity(followeduser).now();
 		    			 
 		    			 followed.addFollowed(dummy);
 		    			 ofy().save().entity(followed).now();
@@ -84,6 +88,7 @@
 		    		  }
 		    	  }else {
 		    		 // elle existe on ne fait rien
+		    		  System.out.println("user already exist, nice");
 		    		 
 		    	  }
 		    	  /* Création ou récupération de la session */

@@ -25,24 +25,29 @@ public class PublishATweet extends HttpServlet {
 		  //selectionner tout les ancien tweets 
 	    response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
-	    response.getWriter().print("Hello App Engine!\r\n");
+	    response.getWriter().print("Publier un tweet");
 	    //afficher la lists des tweet	   	    
 	    try {
 	    	
 	    	HttpSession session = request.getSession();
 	        String pseudo = (String) session.getAttribute( "pseudo" );
-			Follower followers = ofy().load().type(Follower.class).id(pseudo).now();
+			Follow followers = ofy().load().type(Follow.class).id(pseudo).now();
 			 
 			
-			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
-			if(mesfollowers.isEmpty()) {
+			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
+			if(mesfollowers == null) {
 				request.setAttribute("resultat", "pas de followers");
+			} else {
+				System.out.println("Je rentre ici");
+				int i = 0;
+				for (Utilisateur follower : mesfollowers) {
+					java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).filter("owner",follower.getId()).list();
+					request.setAttribute("tweetdesfollowers"+i, tweets);
+					++i;
+	           }
+	           request.setAttribute("resultat", "succes");
+	           request.setAttribute("nbIter", i);
 			}
-	           for (Utilisateur follower : mesfollowers) {
-	        	   java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).filter("owner",follower.getId()).list();
-                   request.setAttribute("tweet", tweets);
-	            }
-	           
 	            
 	        //java.util.List<Tweet> tweets = ofy().load().type(Tweet.class).limit(5).list();       
             //request.setAttribute("tweet", tweets);
@@ -69,13 +74,12 @@ public class PublishATweet extends HttpServlet {
 			ofy().save().entity(newTweet).now();
 			
 			//récuperer tout les followers de user 
-			Follower followers = ofy().load().type(Follower.class).id(pseudo).now();
-			ArrayList<Utilisateur> mesfollowers = followers.getFollowed();
+			Follow followers = ofy().load().type(Follow.class).id(pseudo).now();
+			ArrayList<Utilisateur> mesfollowers = followers.getfollowers();
 			long var = System.currentTimeMillis();
 	            for (Utilisateur follower : mesfollowers) {
 	            	follower.afficherMessage(newTweet);
 	            }
-			System.out.println("Execute en " + (System.currentTimeMillis() - var) + "ms");
 			//faire un foreach et appeler afficher message pour chacun
 			this.getServletContext().getRequestDispatcher( "/WEB-INF/acceuilconnecte.jsp" ).forward( request, response );
 	    }

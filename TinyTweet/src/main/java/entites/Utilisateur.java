@@ -9,6 +9,7 @@ import com.google.appengine.api.users.UserService;
 import com.googlecode.objectify.annotation.*;
 
 @Entity
+@Cache
 @Index
 public class Utilisateur {
 	@Id String id;

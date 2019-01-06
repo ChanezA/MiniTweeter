@@ -26,19 +26,24 @@
         
          <p>Bonjour <%= userService.getCurrentUser().getNickname() %></p>
          <h1>afficher les derniers tweets</h1>
-          <%
-          List<Tweet> tweet = ofy().load().type(Tweet.class).list();
-            for (Tweet message : tweet) {
+        <%if (request.getAttribute("resultat").equals("succes")) {
+        java.util.List<List<Tweet>> messages = new java.util.ArrayList<List<Tweet>>();
+        	for(int i = 0; i < (int)request.getAttribute("nbIter"); ++i) {
+          		messages.add((List<Tweet>)request.getAttribute("tweetdesfollowers"+i));
+        	}
+            for (List<Tweet> message : messages) {
+            	for(Tweet mess : message) {
+            	
         %>
         <p>
-            <strong><%= message.getOwner() %></strong> tweet :<br />
-            <%= message.getMessage() %>
+            <strong><%= mess.getOwner() %></strong> tweet :<br />
+            <%= mess.getMessage() %>
         </p>
         <%
+            	}
             }
+        }    
         %>
-        <p>
-        	Affichage en <%=(System.currentTimeMillis() - var) %> ms
-        </p> 
+        <p> Affichage en <%=(System.currentTimeMillis() - var) %> ms </p> 
     </body>
 </html>
