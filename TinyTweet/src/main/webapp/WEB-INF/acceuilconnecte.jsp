@@ -24,6 +24,8 @@
     <p>Heyyyy fonctioooonnne </p>
     	     	<%String pseudo = (String) session.getAttribute( "pseudo" ); %>
     	     	<p> Post d'un tweet en <%=request.getAttribute("time") %> ms </p>
+    	     	
+    <p> Lien github : https://github.com/ChanezA/MiniTweeter </p>
 	    	  
 </body>
 </html>
