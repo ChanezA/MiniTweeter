@@ -35,7 +35,9 @@ Temps moyens pour envoyer un tweet à 100 followers : 1.5 ms
 
 # Temps pour lire 10, 50 et 100 tweets en ms. 
 10 tweets :118.5 ms
+
 50 tweets : 118.3 ms
+
 100 tweets: 117.1 ms
 
 
